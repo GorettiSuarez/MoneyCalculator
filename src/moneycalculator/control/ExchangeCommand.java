@@ -1,7 +1,5 @@
 package moneycalculator.control;
 
-import java.util.concurrent.Exchanger;
-import moneycalculator.model.Currency;
 import moneycalculator.model.ExchangeRate;
 import moneycalculator.model.Money;
 import moneycalculator.persistence.ExchangeRateReader;

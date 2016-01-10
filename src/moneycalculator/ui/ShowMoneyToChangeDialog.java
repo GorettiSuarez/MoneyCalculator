@@ -8,30 +8,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import moneycalculator.model.Currency;
 import moneycalculator.model.Money;
+import static moneycalculator.persistence.DatabaseReader.compareCurrencyIntegrity;
 
-public class ShowMoneyDialog implements MoneyDialog {
+public class ShowMoneyToChangeDialog implements MoneyDialog {
 
-    int valor;
-    Currency divisa;
-    String acronym, name, symbol;
+    private int valor;
+    private String acronym, name, symbol;
+    private Currency divisa;
 
     @Override
     public Money get() {
         System.out.println("¿Qué moneda desea cambiar? (Introduzca uno a uno los siguientes datos: valor, acronimo, Nombre, símbolo)");
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+        
         try {
             valor = checkValue(Integer.parseInt(buffer.readLine()), buffer);
             acronym = CheckCurrencies.checkAcronym(buffer.readLine());
             name = CheckCurrencies.checkName(buffer.readLine());
             symbol = CheckCurrencies.checkSymbol(buffer.readLine());
             divisa = new Currency(acronym, name, symbol);
-        } catch (IOException ex) {
-            Logger.getLogger(ShowMoneyDialog.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ShowMoneyDialog.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ShowMoneyDialog.class.getName()).log(Level.SEVERE, null, ex);
+            if(!compareCurrencyIntegrity(divisa)) throw new IntegrityException();
+
+        } catch (IOException | SQLException | ClassNotFoundException | IntegrityException ex) {
+            Logger.getLogger(ShowMoneyToChangeDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return new Money(valor, divisa);
     }
 

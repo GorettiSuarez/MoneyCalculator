@@ -16,7 +16,7 @@ public class CurrencySet {
     public Currency get(String text) {
         for (Currency currency : list) 
             if (
-                    currency.getCode().equals(text) || 
+                    currency.getAcronym().equals(text) || 
                     currency.getName().contains(text) || 
                     currency.getSymbol().equals(text)
                 ) return currency;

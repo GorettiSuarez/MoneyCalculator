@@ -1,18 +1,18 @@
 package moneycalculator;
 
 import moneycalculator.control.ExchangeCommand;
-import moneycalculator.persistence.MockExchangeRateReader;
-import moneycalculator.ui.ShowCurrencyDialog;
-import moneycalculator.ui.ShowMoneyDialog;
+import moneycalculator.persistence.ExchangeRateGetter;
+import moneycalculator.ui.ShowNewCurrencyDialog;
+import moneycalculator.ui.ShowMoneyToChangeDialog;
 import moneycalculator.ui.ShowMoneyDisplay;
 
 public class Application {
 
     public static void main(String[] args) {
         ExchangeCommand exchangeCommand = new ExchangeCommand(
-                new ShowMoneyDialog(),
-                new ShowCurrencyDialog(),
-                new MockExchangeRateReader(), 
+                new ShowMoneyToChangeDialog(),
+                new ShowNewCurrencyDialog(),
+                new ExchangeRateGetter(), 
                 new ShowMoneyDisplay()
         );
         exchangeCommand.execute();

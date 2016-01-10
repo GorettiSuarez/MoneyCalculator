@@ -10,7 +10,7 @@ public class CheckCurrencies {
 
     public static String checkAcronym(String acronym) throws IOException, SQLException, ClassNotFoundException {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-        if (!DatabaseReader.search(acronym)) {
+        if (!DatabaseReader.searchIfExists("ACRONYM",acronym)) {
             System.out.println("Por favor introduzca un acronimo válido:");
             String acronym2 = buffer.readLine();
             acronym = checkAcronym(acronym2);
@@ -20,7 +20,7 @@ public class CheckCurrencies {
 
     public static String checkName(String name) throws IOException, SQLException, ClassNotFoundException {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-        if (!DatabaseReader.search(name)) {
+        if (!DatabaseReader.searchIfExists("NAME",name)) {
             System.out.println("Por favor introduzca un nombre válido:");
             String name2 = buffer.readLine();
             name = checkName(name2);
@@ -30,7 +30,7 @@ public class CheckCurrencies {
 
     public static String checkSymbol(String symbol) throws IOException, SQLException, ClassNotFoundException {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-        if (!DatabaseReader.search(symbol)) {
+        if (!DatabaseReader.searchIfExists("SYMBOL",symbol)) {
             System.out.println("Por favor introduzca un símbolo válido:");
             String symbol2 = buffer.readLine();
             symbol = checkSymbol(symbol2);
