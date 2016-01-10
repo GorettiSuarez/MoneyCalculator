@@ -1,0 +1,28 @@
+Lista de símbolos cambiados por $ para que funcione la base de datos:
+•	€ -  EUR
+•	¥ -  JPY
+•	Kč -  CZK
+•	د.ك - KWD
+•	£ - GBP
+Lista final de equivalencias:
+ACRONYM	NAME			SYMBOL
+"EUR"		"Euro"			"$"
+"USD"		"Dolar americano"	"$"
+"AUD"		"Dolar australiano"	"A$"
+"JPY"		"Yen japones"		"$"
+"DKK"		"Corona danesa"	"Kr"
+"ARS"		"Peso argentino"	"m$n"
+"INR"		"Rupia india"		"Rs"
+"VEB"		"Bolivar"		"Bs"
+"LTL"		"Litas lituana"		"Lt"
+"BRL"		"Real brasileño"	"R$"
+"CZK"		"Corona checa"		"$"
+"HKD"		"Dólar de Hong Kong"	"HK$"
+"KWD"		"Dinar kuwaití"		"$"
+"CHF"		"Franco suizo"		"Fr"
+"TRY"		"Lira turca"		"TL"
+"HUF"		"Forinto húngaro"	"Ft"
+"GBP"		"Libra esterlina"	"$"
+"ZAR"		"Rand sudafricano"	"R"
+"CLP"		"Peso chileno"		"$c"
+"RUB"		"Rublo ruso"		"py6"
