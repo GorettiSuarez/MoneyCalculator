@@ -3,6 +3,7 @@ package moneycalculator.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import moneycalculator.model.Currency;
@@ -17,14 +18,18 @@ public class ShowMoneyDialog implements MoneyDialog {
     @Override
     public Money get() {
         System.out.println("¿Qué moneda desea cambiar? (Introduzca uno a uno los siguientes datos: valor, acronimo, Nombre, símbolo)");
-        BufferedReader money = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         try {
-            valor = checkValue(Integer.parseInt(money.readLine()), money);
-            acronym = CheckCurrencies.checkAcronym(money.readLine());
-            name = CheckCurrencies.checkName(money.readLine());
-            symbol = CheckCurrencies.checkSymbol(money.readLine());
+            valor = checkValue(Integer.parseInt(buffer.readLine()), buffer);
+            acronym = CheckCurrencies.checkAcronym(buffer.readLine());
+            name = CheckCurrencies.checkName(buffer.readLine());
+            symbol = CheckCurrencies.checkSymbol(buffer.readLine());
             divisa = new Currency(acronym, name, symbol);
         } catch (IOException ex) {
+            Logger.getLogger(ShowMoneyDialog.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ShowMoneyDialog.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(ShowMoneyDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new Money(valor, divisa);
