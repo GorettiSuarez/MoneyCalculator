@@ -14,7 +14,7 @@ public class DatabaseReader {
 
     private static void setConnection() throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
-        c = DriverManager.getConnection("jdbc:sqlite:ExchangeRatesDB.db");
+        c = DriverManager.getConnection("jdbc:sqlite:ExchangeRatesDBUpdated.db");
         stmt = c.createStatement();
     }
 
